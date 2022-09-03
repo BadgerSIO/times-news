@@ -80,14 +80,16 @@ const showNews = (data) => {
             <div
               class="newsinfo flex-1 space-y-5 py-2 flex flex-col justify-between"
             >
-              <div class="news">
-                <h1 class="font-semibold text-2xl news-title text-slate-800">
+              <div class="news cursor-pointer" onclick="showNewsDetail('${
+                news._id
+              }')" >
+                <h1 class="font-semibold text-2xl news-title text-slate-800" >
                   ${news.title}
                 </h1>
                 <p class="text-base text-gray-500 py-5 news-description">
                   ${
                     news.details
-                      ? news.details.slice(0, 400) + `...`
+                      ? news.details.slice(0, 350) + `...See More`
                       : "no data found"
                   }
                 </p>
@@ -154,12 +156,12 @@ const showNewsDetail = (id) => {
   //show modal data
   const modalData = (news) => {
     defaultModal.innerHTML = `
-  <div class="relative p-4 w-full max-w-2xl h-[90vh] md:h-[90] overflow-y-scroll ">
+  <div class="relative p-4 w-full max-w-4xl h-[100vh] md:h-[95vh]  ">
               <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow">
+              <div class="relative bg-white rounded-lg shadow md:max-h-[95vh] overflow-y-scroll">
                 <!-- Modal header -->
                 <div
-                  class="inline fixed justify-between items-start  rounded-t border-b top-0 left-0"
+                  class=" fixed rounded md:-translate-x-10 "
                 >
                 <button
                     type="button"
