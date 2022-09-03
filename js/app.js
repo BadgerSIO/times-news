@@ -54,7 +54,7 @@ const getNews = async () => {
   const data = await res.json();
   showNews(data.data);
 };
-
+//create news cards
 const showNews = (data) => {
   const newsContainer = document.getElementById("newsContainer");
   data.forEach((news) => {
@@ -69,8 +69,8 @@ const showNews = (data) => {
       "mb-5"
     );
     singleNews.innerHTML = `
-        <div class="thumbnail">
-              <img src="${news.thumbnail_url}" alt="" />
+        <div class="thumbnail ">
+              <img src="${news.thumbnail_url}" alt="" class="h-full object-cover rounded-lg"/>
             </div>
             <div
               class="newsinfo flex-1 space-y-5 py-2 flex flex-col justify-between"
@@ -85,7 +85,7 @@ const showNews = (data) => {
               </div>
               <div class="others grid grid-cols-3 ">
                 <div class="author_info flex items-center space-x-3">
-                  <div class="author_img">
+                  <div class="author_img ">
                     <img src="${news.author.img}" alt="" class="w-12" />
                   </div>
                   <div class="authorname text-sm">
