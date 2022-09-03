@@ -36,8 +36,6 @@ const displayData = (data) => {
   });
 };
 function displayall(category_id, catagory_name) {
-  console.log(catagory_name);
-
   const caturl = `https://openapi.programming-hero.com/api/news/category/0${category_id}`;
   const displayNews = async () => {
     try {
@@ -238,3 +236,4 @@ const closeModal = () => {
   defaultModal.classList.remove("flex");
   defaultModal.classList.add("hidden");
 };
+displayall(1, "Breaking News");
