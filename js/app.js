@@ -76,7 +76,7 @@ const showNews = (data) => {
               class="newsinfo flex-1 space-y-5 py-2 flex flex-col justify-between"
             >
               <div class="news">
-                <h1 class="font-bold text-2xl news-title">
+                <h1 class="font-semibold text-2xl news-title text-slate-800">
                   ${news.title}
                 </h1>
                 <p class="text-base text-gray-500 py-5 news-description">
@@ -98,7 +98,9 @@ const showNews = (data) => {
                     <span class="pr-2"
                       ><img src="images/eye.svg" alt=""
                     /></span>
-                    <span id="total_views">${news.total_view}</span>
+                    <span id="total_views">${
+                      news.total_view > 0 ? news.total_view : "no views"
+                    }</span>
                   </h5>
                 </div>
                 <div class="flex justify-end items-center">
