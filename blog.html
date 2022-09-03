@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- tailwind css  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- flowbite  -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css"
+    />
+    <!-- google fonts  -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+    </style>
+    <!-- tailwind custom  -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            fontFamily: {
+              poppins: "'Poppins', sans-serif",
+            },
+          },
+          container: {
+            center: true,
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-[#F6F6F6] font-poppins">
+    <header>
+      <nav class="p-4">
+        <div class="container flex justify-between items-center">
+          <div class="brand">
+            <h1 class="text-xl font-bold text-violet-500">
+              <span class="bg-violet-500 text-white inline-block p-2 rounded"
+                >Times</span
+              >
+              News
+            </h1>
+          </div>
+          <div class="navLinks">
+            <ul class="flex items-center space-x-4 font-semibold">
+              <li class="hover:text-violet-500">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="hover:text-violet-500">
+                <a href="blog.html">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-2 md:mt-5 md:mb-0" />
+      </nav>
+    </header>
+    <main>
+      <section id="blogNews">
+        <div class="container relative">
+          <h1
+            class="text-xl md:mt-5 ml-5 md:ml-0 font-semibold md:-rotate-90 uppercase md:inline-block text-slate-400"
+          >
+            Blog
+          </h1>
+          <div
+            class="blogBox mb-5 md:mb-10 w-11/12 md:w-3/4 mx-auto bg-white rounded-md p-8"
+          >
+            <h1
+              class="text-justify text-xl md:text-xl lg:text-3xl font-semibold"
+            >
+              Difference between var, let and const keywords in JavaScript
+            </h1>
+            <img src="images/blog1.jpg" alt="" class="w-full mt-3 mb-5" />
+            <p class="text-justify text-sm md:text-xl leading-7 md:leading-10">
+              In JavaScript, users can declare a variable using 3 keywords that
+              are var, let, and const. In this article, we will see the
+              differences between the var, let, and const keywords. We will
+              discuss the scope and other required concepts about each keyword.
+              var keyword in JavaScript: The var is the oldest keyword to
+              declare a variable in JavaScript. Scope: Global scoped or function
+              scoped. The scope of the var keyword is the global or function
+              scope. It means variables defined outside the function can be
+              accessed globally, and variables defined inside a particular
+              function can be accessed within the function.
+            </p>
+          </div>
+          <div
+            class="blogBox mb-5 md:mb-10 w-11/12 md:w-3/4 mx-auto bg-white rounded-md p-8"
+          >
+            <h1
+              class="text-justify text-xl md:text-xl lg:text-3xl font-semibold"
+            >
+              The Difference Between Regular Functions and Arrow Functions
+            </h1>
+            <img src="images/blog2.jpg" alt="" class="w-full mt-3 mb-5" />
+            <p class="text-justify text-sm md:text-xl leading-7 md:leading-10">
+              Regular and arrow functions are often used interchangeably. Yet,
+              they are not the same. There are some important differences
+              between these two. This tutorial will tell you about four of these
+              differences. This will help you recognize when to use regular
+              functions and when to use arrow functions.<br /><br />
+              <span class="text-2xl font-semibold">Forms of functions</span
+              ><br />
+              In modern JavaScript, there are two ways to write functions. You
+              can use either regular functions or you can use arrow functions.
+              If you decide to use regular functions, you can choose from two
+              types of syntax. The first one is function declaration. The second
+              one is function expression.<br />
+              If you decide to use arrow function, things get easier. For arrow
+              functions, there is only one type of syntax you can use, function
+              expression.<br />
+              If you compare the syntax of a regular function (expression) and
+              arrow function, you find two differences: function keyword and =>
+              (fat arrow). A more interesting, and important, question is, what
+              are the differences beyond the syntax?<br /><br />
+              <span class="text-2xl font-semibold">The this</span><br />
+              The first important difference between regular and arrow function
+              is the this keyword. In case of regular functions, the this is
+              very dynamic. It can behave in four different ways depending on
+              the situation. Global scope (with regular functions) When you
+              invoke a regular function in a global scope, the value of this
+              will be global object window. If you invoke the function a strict
+              mode, the value of this will be undefined.<br /><br />
+              <span class="text-2xl font-semibold"
+                >Object methods (with regular functions)</span
+              ><br />
+
+              If you use a regular function to define an object method and
+              invoke it, this will be the parent object. It will be the object
+              inside which you defined the method.
+            </p>
+          </div>
+          <div
+            class="blogBox mb-5 md:mb-10 w-11/12 md:w-3/4 mx-auto bg-white rounded-md p-8"
+          >
+            <h1
+              class="text-justify text-xl md:text-xl lg:text-3xl font-semibold"
+            >
+              Difference between map, foreach, filter,find .
+            </h1>
+            <img src="images/blog3.jpg" alt="" class="w-full mt-3 mb-5" />
+            <p class="text-justify text-sm md:text-xl leading-7 md:leading-10">
+              Incase of map() it iterates inside an array and return a value
+              from it. forEach() method does the same thing but it does not
+              return anything. filter() method works with condition. It will
+              only return those values that has passed it's condition. find()
+              method works like filter method but it stop working after the
+              first return. This are the basic differences.
+            </p>
+          </div>
+          <div
+            class="blogBox mb-5 md:mb-10 w-11/12 md:w-3/4 mx-auto bg-white rounded-md p-8"
+          >
+            <h1
+              class="text-justify text-xl md:text-xl lg:text-3xl font-semibold"
+            >
+              Why do we use template string?
+            </h1>
+            <img src="images/blog1.jpg" alt="" class="w-full mt-3 mb-5" />
+            <p class="text-justify text-sm md:text-xl leading-7 md:leading-10">
+              Template literals are literals delimited with backtick (`)
+              characters, allowing for multi-line strings, for string
+              interpolation with embedded expressions, and for special
+              constructs called tagged templates. Template literals are
+              sometimes informally called template strings, because they are
+              used most commonly for string interpolation (to create strings by
+              doing substitution of placeholders). However, a tagged template
+              literal may not result in a string; it can be used with a custom
+              tag function to perform whatever operations you want on the
+              different parts of the template literal.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
