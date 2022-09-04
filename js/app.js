@@ -18,7 +18,8 @@ const displayData = (data) => {
       "hover:text-violet-600",
       "hover:cursor-pointer",
       "py-2",
-      "px-3",
+      "md:px-3",
+      "px-2",
       "rounded",
       "capitalize",
       "active:bg-violet-300"
@@ -43,16 +44,39 @@ function displayall(category_id, catagory_name) {
       const res = await fetch(caturl);
       const data = await res.json();
       showData(data.data);
-      showNews(data.data);
+      //sorting news on the basis of view count
+      const newData = data.data.sort((a, b) => {
+        if (a.total_view === null) {
+          return 1;
+        }
+        if (b.total_view === null) {
+          return -1;
+        }
+        if (a.total_view === b) {
+          return 0;
+        }
+        return a.total_view < b.total_view ? 1 : -1;
+      });
+      showNews(newData);
     } catch (error) {
       console.log(error);
     }
   };
+  //showing items counts in categories
   const showData = (data) => {
     const catagoryName = document.getElementById("catagory-name");
     catagoryName.innerText = catagory_name;
     const showCount = document.getElementById("item-count");
     showCount.innerText = data.length;
+    const noNewsFound = document.getElementById("noNewsFound");
+    //showing not found message
+    if (data.length == 0) {
+      noNewsFound.classList.remove("hidden");
+    } else {
+      noNewsFound.classList.add("hidden");
+    }
+    //stopping spinner
+    startspin(false);
   };
   displayNews();
 }
@@ -68,26 +92,29 @@ const showNews = (data) => {
       "bg-white",
       "p-4",
       "rounded",
-      "flex",
-      "space-x-4",
+      "md:flex",
+      "md:space-x-4",
       "mb-5"
     );
     singleNews.innerHTML = `
         <div class="thumbnail ">
               <img src="${
                 news.thumbnail_url
-              }" alt="" class="h-full object-cover rounded-lg"/>
+              }" alt="" class="h-full hidden md:block object-cover rounded-lg"/>
+              <img src="${
+                news.image_url
+              }" alt="" class="md:hidden w-full rounded-lg"/>
             </div>
             <div
-              class="newsinfo flex-1 space-y-5 py-2 flex flex-col justify-between"
+              class="newsinfo md:flex-1 space-y-5 py-2 flex flex-col justify-between"
             >
               <div class="news cursor-pointer" onclick="showNewsDetail('${
                 news._id
               }')" >
-                <h1 class="font-semibold text-2xl news-title text-slate-800" >
+                <h1 class="font-semibold text-lg xl:text-2xl py-3 md:py-0 news-title text-slate-800" >
                   ${news.title}
                 </h1>
-                <p class="text-base text-gray-500 py-5 news-description">
+                <p class="text-sm leading-normal md:text-base text-gray-500 md:py-5 news-description">
                   ${
                     news.details
                       ? news.details.slice(0, 350) + `...See More`
@@ -106,7 +133,7 @@ const showNews = (data) => {
                     <h5 class="font-bold capitalize">${
                       news.author.name ? news.author.name : "anonymous"
                     }</h5>
-                    <h6>${
+                    <h6 class="hidden lg:block">${
                       news.author.published_date
                         ? news.author.published_date
                         : "data not available"
@@ -137,10 +164,9 @@ const showNews = (data) => {
             </div>
         `;
     newsContainer.appendChild(singleNews);
-    startspin(false);
   });
 };
-//show news details
+//show news details inside a modal
 const defaultModal = document.getElementById("defaultModal");
 const showNewsDetail = (id) => {
   defaultModal.classList.remove("hidden");
@@ -155,7 +181,7 @@ const showNewsDetail = (id) => {
       console.log(error);
     }
   };
-  //show modal data
+  //setting data inside modal
   const modalData = (news) => {
     defaultModal.innerHTML = `
   <div class="relative p-4 w-full max-w-4xl h-[100vh] md:h-[95vh]  ">
@@ -199,19 +225,19 @@ const showNewsDetail = (id) => {
                     </div>
                     <div class="grow">
                         <h1 class="text-sm">${
-                          news.author.name ? news.author.name : "tumi k?"
+                          news.author.name ? news.author.name : "no data found?"
                         }</h1>
                         <h2 class="text-sm">${
                           news.author.published_date
                             ? news.author.published_date
-                            : "jani na vai"
+                            : "no data found"
                         }</h2>
                     </div>
                   </div>
-                  <h1 class="text-xl font-semibold text-gray-800 news-inner-title">
+                  <h1 class="text-base md:text-xl font-semibold text-gray-800 news-inner-title">
                     ${news.title ? news.title : "no title found"}
                   </h1>
-                  <p class="text-base leading-relaxed text-gray-500 text-justify">
+                  <p class="text-sm md:text-base leading-relaxed text-gray-500 text-justify">
                     ${news.details ? news.details : "no new details"}
                   </p>
                   

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Times News</title>
     <!-- tailwind css  -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- flowbite  -->
@@ -37,7 +37,7 @@
   </head>
   <body class="bg-[#F6F6F6] font-poppins">
     <header>
-      <nav class="p-4">
+      <nav class="px-4 pt-3 md:py-4">
         <div class="container flex justify-between items-center">
           <div class="brand">
             <h1 class="text-xl font-bold text-violet-500">
@@ -48,7 +48,9 @@
             </h1>
           </div>
           <div class="navLinks">
-            <ul class="flex items-center space-x-4 font-semibold">
+            <ul
+              class="flex items-center space-x-4 font-semibold text-sm md:text-base"
+            >
               <li class="hover:text-violet-500">
                 <a href="index.html">Home</a>
               </li>
@@ -62,7 +64,7 @@
       </nav>
       <!-- category start  -->
 
-      <div class="p-3">
+      <div class="px-3">
         <div
           class="container flex flex-wrap justify-between items-center mx-auto"
         >
@@ -89,16 +91,19 @@
             </svg>
           </button>
           <div class="hidden w-full md:block" id="navbar-solid-bg">
+            <!-- category items  -->
             <ul
               id="categories"
-              class="flex flex-col mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent"
+              class="flex flex-col mt-4 rounded-lg md:flex-row md:space-x-5 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent"
             ></ul>
+            <!-- items found inside category start  -->
             <div class="items-found mt-5 bg-white p-5 rounded-md">
-              <h1>
+              <h1 class="text-sm md:text-base font-semibold">
                 <span id="item-count"></span> items found in
                 <span id="catagory-name"></span> Category
               </h1>
             </div>
+            <!-- items found inside category end  -->
           </div>
         </div>
       </div>
@@ -106,7 +111,7 @@
       <!-- category end -->
     </header>
     <main>
-      <section id="news" class="mt-10 p-4">
+      <section id="news" class="md:mt-10 p-4">
         <!-- spinner start  -->
         <div id="spinnerid" class="text-center hidden">
           <div role="status">
@@ -129,8 +134,17 @@
           </div>
         </div>
         <!-- spinner end  -->
+        <!-- not found message  -->
+        <div class="container hidden" id="noNewsFound">
+          <h2
+            class="text-xl md:text-3xl text-slate-400 capitalize font-semibold text-center"
+          >
+            No News found
+          </h2>
+        </div>
+        <!-- news container start  -->
         <div class="container" id="newsContainer"></div>
-
+        <!-- modal start  -->
         <div class="container">
           <!-- Main modal -->
           <div
