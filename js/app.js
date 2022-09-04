@@ -1,3 +1,4 @@
+//connecting with api
 const loadData = async () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`;
   try {
@@ -21,8 +22,7 @@ const displayData = (data) => {
       "md:px-3",
       "px-2",
       "rounded",
-      "capitalize",
-      "active:bg-violet-300"
+      "capitalize"
     );
     li.innerHTML = `
       ${catagory.category_name}
@@ -33,10 +33,12 @@ const displayData = (data) => {
         catagory.category_name
       )})`
     );
+
     ul.appendChild(li);
   });
 };
 function displayall(category_id, catagory_name) {
+  //spinner start
   startspin(true);
   const caturl = `https://openapi.programming-hero.com/api/news/category/0${category_id}`;
   const displayNews = async () => {
